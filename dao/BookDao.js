@@ -28,8 +28,8 @@ function deleteBook(id,callback) {
 function getNewId(callback){
     bookModel.aggregate([{$group:{_id:"max", maxid:{$max:"$id"}}}],function (err,doc) {
         if(!err){
-            console.log(doc.size);
-            if(!doc[0])  callback(doc[0].maxid);
+            console.log(doc.length);
+            if(doc.length > 0)  callback(doc[0].maxid);
             else callback(0);
         } else {
             callback(-1);
