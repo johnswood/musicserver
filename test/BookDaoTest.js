@@ -5,7 +5,7 @@ const assert=require('assert')
 
 describe("测试BookDao",function () {
    before(function () {
-      mongoose.connect('mongodb://localhost/demo02',function (err) {
+      mongoose.connect('mongodb://39.99.190.190/demo02',function (err) {
 
       })
    })
@@ -34,6 +34,13 @@ describe("测试BookDao",function () {
             done()
         })
     })
+
+    // it("最大ID",function (done) {
+    //     bookDao.getNewId(function (maxid) {
+    //         assert.ok(maxid >=0);
+    //         done()
+    //     })
+    // })
 
 
 })

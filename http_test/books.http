@@ -14,13 +14,14 @@ POST http://localhost:3000/books
 Content-Type: application/json
 
 {
-  "name": "jack",
-  "price": 216
+  "id": 3,
+  "name": "book0",
+  "price": 340
 }
 
 ###
 
-DELETE http://localhost:3000/books/5e15982a8db67b0dee224f90
+DELETE http://localhost:3000/books/1
 Accept: application/json
 
 ###
