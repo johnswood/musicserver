@@ -1,22 +1,24 @@
 var express = require('express');
 var router = express.Router();
-var bookDao=require('../dao/BookDao')
+var albumDao=require('../dao/AlbumDao')
 /* GET users listing. */
 router.get('/', function(req, res) {
-  bookDao.findAllBooks(function (books) {
-    res.json(books)
+  albumDao.findAllAlbum(function (albums) {
+    res.json(albums)
   })
 });
 
 router.post('/',function (req,res) {
-    let book=req.body
-    bookDao.addBook(book,function (nb) {
+    console.log("this is apost")
+    let album=req.body
+    console.log(album);
+    albumDao.addAlbum(album,function (nb) {
       res.json(nb)
     })
 })
 router.delete('/:id',function (req,res) {
     let id=req.params.id;
-    bookDao.deleteBook(id,function (obj) {
+    albumDao.deleteAlbum(id,function (obj) {
         res.json(obj)
     })
 })
