@@ -7,33 +7,47 @@
 # * 'mptr' and 'fptr' create a POST request to submit a form with a text or file field (multipart/form-data);
 
 
-POST http://localhost:3000/albums
+POST http://localhost:3000/singers
 Content-Type: application/json
 
-{"album_id":4,
-  "album_name":"albumname4",
-  "issue_date":"2019-1-1",
-  "coverpic": "/coverpic/1.jpg",
-  "singers": [
-    {"singer_id":34,"singer_name":"Singer Name"}
-  ],
-  "company" : "测试照片公司",
-  "comment": "测试备注",
-  "songs": [{"song_id":23,"song_name":"我是一只小小鸟","time": 180}]
+{
+  "singer_id":1,
+  "singer_name":"singername1",
+  "area":"上海",
+  "birthday" : "1990-1-1",
+  "sex": true,
+  "photo": "/singerpic/1.jpg",
+  "comment":"Test Comment"
 }
 
 ###
 
-GET http://localhost:3000/albums
+PUT http://localhost:3000/singers
+Content-Type: application/json
+
+{
+  "singer_id":1,
+  "singer_name":"changed name",
+  "area":"北京",
+  "birthday" : "1990-1-2",
+  "sex": true,
+  "photo": "/singerpic/1.jpg",
+  "comment":"Test Comment2"
+}
+
+###
+
+GET http://localhost:3000/singers
 Accept: application/json
 
 ###
 
-GET http://localhost:3000/albums/1
+GET http://localhost:3000/singers/2
 Accept: application/json
 
 ###
-DELETE http://localhost:3000/albums/1
+
+DELETE http://localhost:3000/singers/1
 Accept: application/json
 
 ###

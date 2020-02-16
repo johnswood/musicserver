@@ -5,7 +5,7 @@ const assert=require('assert')
 
 describe("Test AlbumDao",function () {
    before(function () {
-      mongoose.connect('mongodb://39.99.190.190/demo02',function (err) {
+      mongoose.connect('mongodb://localhost/music',function (err) {
 
       })
    })

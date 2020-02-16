@@ -6,7 +6,9 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var albumsRouter=require('./routes/albums')
+var albumsRouter=require('./routes/albums');
+var singersRouter=require('./routes/singers');
+var uploadRouter=require('./routes/upload');
 
 
 
@@ -30,7 +32,9 @@ app.use((req, res, next) => {
 });
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use("/albums",albumsRouter)
+app.use("/albums",albumsRouter);
+app.use("/singers",singersRouter);
+app.use("/upload", uploadRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

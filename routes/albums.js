@@ -8,6 +8,13 @@ router.get('/', function(req, res) {
   })
 });
 
+router.get('/:id', function(req, res) {
+    let id=req.params.id;
+    albumDao.findAlbum(id, function (albums) {
+        res.json(albums)
+    })
+});
+
 router.post('/',function (req,res) {
     console.log("this is apost")
     let album=req.body

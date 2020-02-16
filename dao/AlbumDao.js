@@ -20,6 +20,28 @@ function findAllAlbum(callback) {
     })
 }
 
+function findAlbum(id, callback) {
+    if(id) {
+        albumModel.find({"album_id": id}).exec(function (err,albums) {
+            if(!err) callback(albums)
+        })
+    } else {
+        albumModel.find({}).exec(function (err,albums) {
+            if(!err) callback(albums)
+        })
+    }
+
+}
+
+function updatePhotoPath(id, newpath, callback) {
+    let b=  albumModel.update({ "album_id": id },{$set:{"coverpic": newpath}}, { multi: true }, function (err, res) {
+        if (! err) {
+            callback(res)
+        }
+        //console.log('The raw response from Mongo was ', res);
+    });
+}
+
 function deleteAlbum(id,callback) {
    //bookModel.findByIdAndRemove(id,function (err) {
     albumModel.remove({"album_id":id},function (err) {
@@ -38,4 +60,4 @@ function deleteAlbum(id,callback) {
 //         }
 //     })
 // }
-module.exports={addAlbum,deleteAlbum,findAllAlbum}
+module.exports={addAlbum,deleteAlbum,findAllAlbum,findAlbum,updatePhotoPath}
