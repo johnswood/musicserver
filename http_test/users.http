@@ -8,6 +8,22 @@
 
 
 POST http://localhost:3000/users
+#Content-Type: application/json
+#
+#{
+#  "user_id":1,
+#  "user_name":"username",
+#  "photo": "users/1.jpg",
+#  "password": "password",
+#  "real_name": "张三",
+#  "mobile": "18612345678",
+#  "email": "test@mycompany.com",
+#  "role_id": "admin"
+#}
+#
+####
+
+PUT http://localhost:3000/users
 Content-Type: application/json
 
 {
@@ -23,11 +39,15 @@ Content-Type: application/json
 
 ###
 
-GET http://localhost:3000/users
+GET http://localhost:3000/users?name=username
 Accept: application/json
 
 ###
 
+GET http://localhost:3000/users
+Accept: application/json
+
+###
 
 DELETE http://localhost:3000/users/1
 Accept: application/json

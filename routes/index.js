@@ -6,4 +6,13 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
+router.post("/login",function(req,res,next){
+  let user = req.body;
+  let userDao = require('../dao/UserDao')
+  uerDao.login(user.username, user.password,function(user){
+    res.json(user);
+  })
+
+})
+
 module.exports = router;

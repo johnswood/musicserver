@@ -13,7 +13,7 @@ Content-Type: application/json
 {"album_id":4,
   "album_name":"albumname4",
   "issue_date":"2019-1-1",
-  "coverpic": "/coverpic/1.jpg",
+  "photo": "/photo/1.jpg",
   "singers": [
     {"singer_id":34,"singer_name":"Singer Name"}
   ],

@@ -61,7 +61,11 @@ router.post('/:path/:id',  function(req, res) {
                 dao.updatePhotoPath(id,url,function(res){
 
                 })
-            }
+            }else if(path == "user"){
+                let dao =require('../dao/UserDao');
+                dao.updatePhotoPath(id,url,function(res){
+                })
+            };
             res.json({"url":url})
             //console.log(url)
             //console.log(req.file)

@@ -42,7 +42,12 @@ Accept: application/json
 
 ###
 
-GET http://localhost:3000/singers/2
+GET http://localhost:3000/singers?name=张三
+Accept: application/json
+
+###
+
+GET http://localhost:3000/singers/17
 Accept: application/json
 
 ###

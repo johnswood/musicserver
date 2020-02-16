@@ -23,6 +23,15 @@ router.post('/',function (req,res) {
       res.json(nb)
     })
 })
+
+router.put('/',function (req,res) {
+    console.log("this is apost")
+    let album=req.body
+    //console.log(album);
+    albumDao.updateAlbum(album,function (nb) {
+        res.json(nb)
+    })
+})
 router.delete('/:id',function (req,res) {
     let id=req.params.id;
     albumDao.deleteAlbum(id,function (obj) {

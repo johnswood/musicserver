@@ -4,15 +4,26 @@ const mongoose=require('mongoose')
 
 let albumModel=mongoose.model("album")
 function addAlbum(album,callback) {
+    let snDao = require('../dao/SnDao');
+    snDao.getNext("album",function (id) {
+        album.album_id = id;
+        album.photo = "/albumpic/defaul.jpg"
+        let b=  albumModel.create(album,function (err,newalbum) {
+            if(!err) callback(newalbum);
 
-    let b=  albumModel.create(album,function (err,newalbum) {
-        if(!err) callback(newalbum);
-
-    });
-
+        });
+    })
 
 }
 
+function updateAlbum(album,callback) {
+    albumModel.update({ "album_id": album.album_id },album, { multi: true }, function (err, raw) {
+        if (! err) {
+            callback(raw)
+        }
+    })
+
+}
 
 function findAllAlbum(callback) {
     albumModel.find({}).exec(function (err,albums) {
@@ -34,7 +45,7 @@ function findAlbum(id, callback) {
 }
 
 function updatePhotoPath(id, newpath, callback) {
-    let b=  albumModel.update({ "album_id": id },{$set:{"coverpic": newpath}}, { multi: true }, function (err, res) {
+    let b=  albumModel.update({ "album_id": id },{$set:{"photo": newpath}}, { multi: true }, function (err, res) {
         if (! err) {
             callback(res)
         }
@@ -60,4 +71,4 @@ function deleteAlbum(id,callback) {
 //         }
 //     })
 // }
-module.exports={addAlbum,deleteAlbum,findAllAlbum,findAlbum,updatePhotoPath}
+module.exports={addAlbum,updateAlbum,deleteAlbum,findAllAlbum,findAlbum,updatePhotoPath}

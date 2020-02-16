@@ -3,9 +3,16 @@ var router = express.Router();
 var singerDao=require('../dao/SingerDao')
 /* GET users listing. */
 router.get('/', function(req, res) {
-  singerDao.findAllSinger(function (singers) {
-    res.json(singers)
-  })
+    let name = req.query.name;
+    singerDao.findAllSinger(name, function (singers) {
+        res.json(singers)
+    })
+});
+router.get('/query', function(req, res) {
+    let name = req.query.name;
+    singerDao.findAllSinger2(name, function (singers) {
+        res.json(singers)
+    })
 });
 
 router.get('/:id', function(req, res) {

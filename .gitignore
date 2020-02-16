@@ -1,6 +1,6 @@
 node_modules
-public/coverpic
-public/singerpic
+public/*pic
+
 .DS_Store
 /dist
 

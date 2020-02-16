@@ -11,7 +11,7 @@ let AlbumSchema={
         {"singer_id":Number,"singer_name":String}
     ],
     songs: [{"song_id":Number,"song_name":String, "time": Number}],
-    coverpic: String
+    photo: String
 }
 
 let SingerSchema={

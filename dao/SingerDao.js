@@ -40,10 +40,29 @@ function updatePhotoPath(id, newpath, callback) {
     });
 }
 
-function findAllSinger(callback) {
-    singerModel.find({},{"_id":0}).exec(function (err,singers) {
-        if(!err) callback(singers)
-    })
+function findAllSinger(name, callback) {
+    if(name){
+        singerModel.find({$text:{$search: name}},{"_id":0}).exec(function (err,singers) {
+            if(!err) callback(singers)
+        })
+    } else {
+        singerModel.find({},{"_id":0}).exec(function (err,singers) {
+            if(!err) callback(singers)
+        })
+    }
+
+}
+
+function findAllSinger2(name,callback){
+    if(name){
+        singerModel.find({"singer_name": {$regex: name, $options: 'i'}},{"_id":0}).exec(function (err,singers) {
+            if(!err) callback(singers)
+        })
+    } else {
+        singerModel.find({},{"_id":0}).exec(function (err,singers) {
+            if(!err) callback(singers)
+        })
+    }
 }
 
 function findSinger(id,callback) {
@@ -77,4 +96,4 @@ function deleteSinger(id,callback) {
 //         }
 //     })
 // }
-module.exports={addSinger,deleteSinger,findAllSinger,findSinger, updateSinger,updatePhotoPath}
+module.exports={addSinger,deleteSinger,findAllSinger,findAllSinger2,findSinger, updateSinger,updatePhotoPath}
