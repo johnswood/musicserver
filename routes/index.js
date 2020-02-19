@@ -9,7 +9,8 @@ router.get('/', function(req, res, next) {
 router.post("/login",function(req,res,next){
   let user = req.body;
   let userDao = require('../dao/UserDao')
-  uerDao.login(user.username, user.password,function(user){
+  console.log("%s,%s",user.username,user.password)
+  userDao.login(user.username, user.password,function(user){
     res.json(user);
   })
 
